@@ -29,7 +29,7 @@ public class LoginTest extends BasicTest {
         Utils.hardWait();
         // Boolean isDisplayed = isErrorMessageDisplayed("//div[@class='woocommerce-MyAccount-content']");
         // if(isDisplayed == true){
-            Assert.assertEquals(driver.findElement(By.xpath("//div[@class='woocommerce-MyAccount-content']")).getText().contains("Xin chào"),true);
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='woocommerce-MyAccount-content']")).getText().contains("Xin chào"),true);
         
 // 
 //         // ===Xpath locator===

@@ -1,24 +1,34 @@
 package com;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import com.utils.Utils;
 
-import com.utils.*;
+import com.utils.BasicTest;
 
-public class Bai17_ShoppingCartTest extends BasicTest {
-    @Test
+public class Bai18_TabTest extends BasicTest {
+    @Test(testName = "Open new tab and check login")
     public void shoppingCartTest() throws Exception {
-        String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
-        driver.get(url);
+        driver.get("https://bantheme.xyz/hathanhauto/tai-khoan/");
         Utils.loginWithEmail_Password("nhanvip124@gmail.com","P@ssword1235678",driver);
         Boolean isVerifyText = driver.findElement(By.xpath("//div[@class='woocommerce-MyAccount-content']")).getText().contains("Xin chào");
         Assert.assertTrue(isVerifyText);
-        
+
+        ((JavascriptExecutor) driver).executeScript("window.open()");
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        driver.close();
+        driver.switchTo().window(tabs.get(1));
+        driver.get("https://bantheme.xyz/hathanhauto/tai-khoan/");
         WebElement searchBar = driver.findElement(By.xpath("(//input[@placeholder='Tìm kiếm...'])[1]"));
         searchBar.sendKeys("merc");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.fs-sremain-products a:first-child")));
@@ -28,8 +38,9 @@ public class Bai17_ShoppingCartTest extends BasicTest {
         selectOrigin.selectByValue("england");
         WebElement btnAddCard = driver.findElement(By.xpath("//*[text()='Thêm vào giỏ hàng']"));
         btnAddCard.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='woocommerce-message']")));
-        Assert.assertTrue(driver.findElement(By.xpath("//div[@class='woocommerce-message']")).isDisplayed());
+        WebElement btnAccount = driver.findElement(By.xpath("//a[@class='pos-login']"));
+        btnAccount.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='woocommerce-MyAccount-content']")));
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='woocommerce-MyAccount-content']")).getText().contains("Xin chào"),true);
     }
-
 }

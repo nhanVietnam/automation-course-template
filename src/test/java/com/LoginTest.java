@@ -17,7 +17,6 @@ public class LoginTest extends BasicTest {
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
-        Utils.hardWait();
 
         WebElement emailLogin = driver.findElement(By.xpath("//input[@id='username']"));
         WebElement passwordLogin = driver.findElement(By.xpath("//input[@id='password']"));
@@ -26,7 +25,6 @@ public class LoginTest extends BasicTest {
         passwordLogin.sendKeys("P@ssword1235678");
         btnLogin.click();
 
-        Utils.hardWait();
         // Boolean isDisplayed = isErrorMessageDisplayed("//div[@class='woocommerce-MyAccount-content']");
         // if(isDisplayed == true){
         Assert.assertEquals(driver.findElement(By.xpath("//div[@class='woocommerce-MyAccount-content']")).getText().contains("Xin chào"),true);

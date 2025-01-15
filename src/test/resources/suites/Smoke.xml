@@ -11,6 +11,7 @@
                 </methods>
             </class>
             <class name="com.Bai19_ICEHRM_LoginTest" />
+            <class name="Bai20_ShoppingCartTest" />
         </classes>
     </test>
 </suite> <!-- Suite -->

@@ -5,13 +5,13 @@
 ### Run 1 script
 
 ```
-mvn clean test -Dtest=com.LoginTest
+mvn clean test -Dtest=com.Bai21_BreadcrumTest
 ```
 
 ### Run many scripts
 
 ```
-mvn clean test -Dsuite=Smoke
+mvn clean test -Dsuite=TestNG
 ```
 
 ## Report

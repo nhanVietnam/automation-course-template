@@ -1,0 +1,38 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions
+on:
+    push:
+        branches:
+            - bai_23_26
+jobs:
+    test-ci:
+        name: Test CI
+        timeout-minutes: 5
+        runs-on: ubuntu-latest
+        permissions:
+            contents: "read"
+            id-token: "write"
+    steps:
+        - uses: actions/checkout@v3
+
+        - name: Set up JDK
+          uses: actions/setup-java@v2
+          with:
+              distribution: "temurin"
+              java-version: "11"
+
+        - name: Install Maven
+          run: sudo apt-get install -y maven
+
+        - name: Install Chrome
+          run: sudo apt-get update
+              sudo apt-get --only-updrade install google-chrome-stable
+
+        - name: CI Test
+          run: mvn clean test -Dsuite=TestNG
+
+          # uses: actions/upload-artifact@v3
+          # if: failure()
+          # with:
+          #     name: testng-report-${{github.run_number}}
+          #     path: target/surefire-reports/emailable-report.html

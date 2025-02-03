@@ -18,7 +18,6 @@ public class Bai16_LoginTest extends BasicTest {
         loginPage.enterEmail("nhanvip124@gmail.com");
         loginPage.clickLoginBtn();
         // loginPage.enterPassword("P@ssword1235678");
-        // loginPage.enterPassword("P@ssword1235678");
         // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[@class='woocommerce-error']")));
         WebElement errorMsg = loginPage.findElement(By.xpath("//ul[@class='woocommerce-error']"));
         Assert.assertTrue(errorMsg.isDisplayed());

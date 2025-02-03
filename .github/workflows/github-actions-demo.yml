@@ -2,9 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions
 on:
     push:
-        branches:
-            - bai_23_26
-            - main
+        branches: [ main ]
 jobs:
     test-ci:
         name: Test CI
@@ -14,8 +12,7 @@ jobs:
             contents: "read"
             id-token: "write"
     steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
+         - uses: actions/checkout@v4
 
         - name: Set up JDK
           uses: actions/setup-java@v2

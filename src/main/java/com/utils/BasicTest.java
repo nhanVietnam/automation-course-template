@@ -27,7 +27,6 @@ public abstract class BasicTest {
         // ChromeOptions options = new ChromeOptions();
         // System.setProperty("webdriver.chrome.driver", driverPath);
         // driver = new ChromeDriver(options);
-        
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");

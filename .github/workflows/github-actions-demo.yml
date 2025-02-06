@@ -33,8 +33,9 @@ jobs:
       - name: CI Test
         run: mvn clean test -Dsuite=TestNG
 
-        # uses: actions/upload-artifact@v3
-        # if: failure()
-        # with:
-        #     name: testng-report-${{github.run_number}}
-        #     path: target/surefire-reports/emailable-report.html
+      - name: Export Report
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+            name: testng-report-${{github.run_number}}
+            path: target/surefire-reports/emailable-report.html

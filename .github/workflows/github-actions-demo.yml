@@ -35,7 +35,6 @@ jobs:
 
       - name: Export Report
         uses: actions/upload-artifact@v4
-        if: failure()
         with:
-            name: testng-report-${{github.run_number}}
-            path: target/surefire-reports/emailable-report.html
+          name: testng-report-${{github.run_number}}
+          path: target/surefire-reports

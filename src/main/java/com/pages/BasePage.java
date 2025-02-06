@@ -20,6 +20,7 @@ public class BasePage {
         this.driver = givenDriver;
         // PageFactory.initElements(this.driver,this);
         this.wait = new WebDriverWait(driver,10);
+        
     }
 
     private void setDriver(String browserName, String appURL){

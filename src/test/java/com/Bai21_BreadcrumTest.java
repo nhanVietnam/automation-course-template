@@ -20,6 +20,7 @@ public class Bai21_BreadcrumTest extends BasicTest {
     
     @Test
     public void breadcrumTest() throws Exception {
+        
         String url = "https://bantheme.xyz/hathanhauto/tai-khoan/";
         Actions action = new Actions(driver);
         driver.get(url);

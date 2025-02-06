@@ -1,16 +1,16 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions
 on:
-    push:
-        branches: ["main"]
+  push:
+    branches: ["main"]
 jobs:
-    test-ci:
-        name: Test CI
-        timeout-minutes: 5
-        runs-on: ubuntu-latest
-        # permissions:
-        #     contents: "read"
-        #     id-token: "write"
+  test-ci:
+    name: Test CI
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    permissions:
+      contents: "read"
+      id-token: "write"
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -22,7 +22,7 @@ jobs:
       - name: Install Chrome
         uses: browser-actions/setup-chrome@latest
       - name: Installed Done
-        run: chrome --version
+      - run: chrome --version
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
